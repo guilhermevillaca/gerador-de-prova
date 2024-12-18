@@ -37,6 +37,7 @@ public class Endereco {
     @Column(name = "complemento")
     private String complemento;
 
+    @ManyToOne
     @JoinColumn(name = "cidade_id", referencedColumnName = "id")
     private Cidade cidade;
 

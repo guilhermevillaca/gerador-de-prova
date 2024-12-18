@@ -2,6 +2,8 @@ package br.com.villaca.prova.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface DisciplinaRepository extends CrudRepository<DisciplinaRepository, Long>{
+import br.com.villaca.prova.model.Disciplina;
+
+public interface DisciplinaRepository extends CrudRepository<Disciplina, Long>{
 
 }
