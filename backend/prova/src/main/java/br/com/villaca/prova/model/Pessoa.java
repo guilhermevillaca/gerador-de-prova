@@ -36,11 +36,12 @@ public class Pessoa {
 
     @Column(name = "email")
     private String email;
-    
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> enderecos;
+    public Pessoa(String nome, String cpf, LocalDate dataNascimento, String email){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
+    }
 
 }

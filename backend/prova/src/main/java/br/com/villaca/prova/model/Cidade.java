@@ -29,4 +29,9 @@ public class Cidade {
     @JoinColumn(name = "estado_id", nullable = false, referencedColumnName = "id")
     private Estado estado;
 
+    public Cidade(String nome, Estado estado){
+        this.nome = nome;
+        this.estado = estado;
+    }
+
 }

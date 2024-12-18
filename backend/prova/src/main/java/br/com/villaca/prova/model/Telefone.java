@@ -35,4 +35,11 @@ public class Telefone {
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
 
+    public Telefone(String ddd, String numero, boolean principal, Pessoa pessoa){
+        this.ddd = ddd;
+        this.numero = numero;
+        this.principal = principal;
+        this.pessoa = pessoa;
+    }
+
 }

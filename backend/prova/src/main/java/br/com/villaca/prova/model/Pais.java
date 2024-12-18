@@ -25,5 +25,10 @@ public class Pais {
 
     @Column(name = "sigla")
     private String sigla; // Ex: "BR" para Brasil
+
+    public Pais(String nome, String sigla){
+        this.nome = nome;
+        this.sigla = sigla;
+    }
     
 }

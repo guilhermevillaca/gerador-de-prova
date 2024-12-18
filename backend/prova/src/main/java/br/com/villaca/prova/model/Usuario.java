@@ -33,4 +33,11 @@ public class Usuario {
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
 
+    public Usuario(String login, String senha, Boolean ativo, Pessoa pessoa){
+        this.login = login;
+        this.senha = senha;
+        this.ativo = ativo;
+        this.pessoa = pessoa;
+    }
+
 }

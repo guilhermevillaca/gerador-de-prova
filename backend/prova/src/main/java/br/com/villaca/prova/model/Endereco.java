@@ -45,4 +45,13 @@ public class Endereco {
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
 
+    public Endereco(String cep, String logradouro, String bairro, String numero, String complemento, Cidade cidade){
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.cidade = cidade;
+    }
+
 }

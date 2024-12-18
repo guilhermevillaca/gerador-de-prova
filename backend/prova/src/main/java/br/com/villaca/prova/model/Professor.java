@@ -33,4 +33,9 @@ public class Professor {
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
 
+    public Professor(Grau grau, Pessoa pessoa){
+        this.grau = grau;
+        this.pessoa = pessoa;
+    }
+
 }

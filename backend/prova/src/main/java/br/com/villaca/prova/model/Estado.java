@@ -25,13 +25,17 @@ public class Estado {
     @Column(name="nome")
     private String nome;
 
-    @Column(name="sigla")
-    private String sigla; // Ex: "PR" para Paraná
+    @Column(name="uf")
+    private String uf; // Ex: "PR" para Paraná
 
     @ManyToOne
     @JoinColumn(name = "pais_id", nullable = false, referencedColumnName = "id")
     private Pais pais;
 
-    // Getters e Setters
+    public Estado(String nome, String uf, Pais pais){
+        this.nome = nome;
+        this.uf = uf;
+        this.pais = pais;
+    }
 
 }

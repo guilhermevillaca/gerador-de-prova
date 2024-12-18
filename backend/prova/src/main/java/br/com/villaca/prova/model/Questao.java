@@ -22,15 +22,17 @@ public class Questao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo")
     private TipoQuestao tipo;
 
-    @Column(length = 1000, name = "enunciado")
+    @Column(length = 1000, name = "enunciado")    
     private String enunciado;
 
-    @Column(name = "numeroDeLinhas")
+    @Column(name = "numeroDeLinhas")    
     private Integer numeroDeLinhas; // Apenas para questões abertas   
 
     @ManyToOne
