@@ -1,3 +1,36 @@
-<div class="container-fluid">
-    <router-outlet />
+<!--Aqui deve abrir todas as telas-->
+<div class="container-fluid" *ngIf="(isLoggedIn$ | async)">
+
+    <div class="row">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">        
+
+            <nav class="nav flex-column">
+               <a class="nav-link active" aria-current="page" routerLink="prova">Prova</a>
+               <hr>
+               <a class="nav-link" routerLink="professor">Pessoa</a>
+               <a class="nav-link" routerLink="professor">Professor</a>
+               <a class="nav-link" routerLink="disciplina">Disciplina</a>
+               <hr>
+               <a class="nav-link" (click)="sair()">Sair</a>
+               <a class="nav-link" (click)="validar()">Validar</a>
+            </nav>
+    
+        </div>
+
+        <main class="col-md-9 col-lg-9">        
+
+            <router-outlet />
+
+        </main>
+
+    </div>
+    
+</div>
+
+
+<!--Aqui abre tela login-->
+<div *ngIf="!(isLoggedIn$ | async)">
+    <div class="container-fluid">
+        <router-outlet />
+    </div>
 </div>

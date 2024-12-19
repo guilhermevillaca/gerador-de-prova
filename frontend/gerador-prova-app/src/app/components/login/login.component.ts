@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../service/usuario.service';
+import { UsuarioService } from '../../service/usuario.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Usuario } from '../model/usuario';
-import { log } from 'console';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
 
-  estaLogado$: Observable<boolean> | undefined;   
+  isLoggedIn$: Observable<boolean> | undefined;   
   form = new FormGroup({
     login: new FormControl<string>(''),
     senha: new FormControl<string>(''),    
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estaLogado$ = this._usuarioService.isLoggedIn;   
+    this.isLoggedIn$ = this._usuarioService.isLoggedIn;   
   }
 
   public entrar(): void{

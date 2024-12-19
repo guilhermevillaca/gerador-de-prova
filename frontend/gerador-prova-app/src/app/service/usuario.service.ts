@@ -5,6 +5,7 @@ import { HttpBackend, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Configuration } from '../configuration';
 import moment from 'moment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UsuarioService extends GenericService<Usuario>{
   private loggedIn = new BehaviorSubject<boolean>(false);   
 
 
-  constructor(handler: HttpBackend) { 
+  constructor(handler: HttpBackend, private router: Router) { 
     let url = "http://localhost:8080/usuario";
     super(handler, url);
   }
@@ -31,6 +32,12 @@ export class UsuarioService extends GenericService<Usuario>{
     }
     return this.loggedIn.asObservable();     
   }
+
+  setLogout(){
+    localStorage.removeItem("access_token");
+    this.loggedIn.next(false);
+    this.router.navigate(['login']);    
+  }  
   
   public setAccesso(usuario:any) {    
     localStorage.setItem("access_token", JSON.stringify(usuario));    
