@@ -85,6 +85,9 @@ public class DataFixture implements CommandLineRunner{
         Usuario usuario1 = new Usuario("guilherme.villaca", StringToSHA256.toSHA256("123"), true, pessoa1);
         usuarioRepository.save(usuario1);
 
+
+        System.out.println("Dados inseridos com sucesso!");
+
     }
 
 }
