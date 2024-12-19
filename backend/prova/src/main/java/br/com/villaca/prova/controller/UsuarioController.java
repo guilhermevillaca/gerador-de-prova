@@ -24,9 +24,14 @@ public class UsuarioController extends GenericController<Usuario, Long>{
     private AuthService authService;
 
     @RequestMapping(value = "entrar/{login}/{senha}", method = RequestMethod.GET)
-    public ResponseEntity<UsuarioDTO> buscarPorLoginESenha(@PathVariable(value="login") String login, @PathVariable(value="senha")String senha) {
-        UsuarioDTO usuarioDTO = authService.login(login, senha);
-        return ResponseEntity.ok(usuarioDTO);
+    public ResponseEntity<?> buscarPorLoginESenha(@PathVariable(value="login") String login, @PathVariable(value="senha")String senha) {
+        Optional<UsuarioDTO> usuarioDTO = authService.login(login, senha);
+        if(usuarioDTO.isPresent()){
+            return ResponseEntity.ok(usuarioDTO);
+        }else{
+            return ResponseEntity.ok("usuario_invalido");
+        }
+        
     }
 
     @GetMapping("/validar")

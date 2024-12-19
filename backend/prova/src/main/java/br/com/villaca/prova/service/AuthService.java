@@ -16,14 +16,14 @@ public class AuthService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public UsuarioDTO login(String login, String senha) {
+    public Optional<UsuarioDTO> login(String login, String senha) {
         Optional<Usuario> usuario = usuarioRepository.findByLoginAndSenha(login, StringToSHA256.toSHA256(senha)); 
         
         if (usuario.isPresent()) {
             String token = JwtUtil.generateToken(login);
             UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.get().getId(), usuario.get().getLogin(), usuario.get().getAtivo(), token);
-            return usuarioDTO; 
+            return Optional.of(usuarioDTO); 
         }
-        throw new RuntimeException("Credenciais inválidas");
+        return Optional.empty();
     }
 }
