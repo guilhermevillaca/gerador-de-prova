@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.villaca.prova.model.Alternativa;
 
 @RestController
-@RequestMapping(value="categoria")
+@RequestMapping(value="alternativa")
 public class AlternativaController extends GenericController<Alternativa, Long>{
 
 }

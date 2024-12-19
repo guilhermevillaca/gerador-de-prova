@@ -5,4 +5,5 @@ export class Usuario {
     login!: string|null;
     senha!: string|null;
     pessoa?: Pessoa|null;
+    ativo?: boolean|null;
 }

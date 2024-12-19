@@ -1,1 +1,35 @@
-<p>login works!</p>
+
+<div class="row justify-content-md-center">
+
+    <div class="col-6">
+
+        <h3>Insira seu usuário para entrar no sistema</h3>
+
+        
+        <form class="form" [formGroup]="form">
+            <div class="mb-3">
+                <label for="login" class="form-label">Login</label>
+                <input type="text" class="form-control" id="login" aria-describedby="loginAjuda" 
+                placeholder="Login" [formControl]="form.controls.login">
+                <div id="loginAjuda" class="form-text">Nunca iremos compartilhar seus dados com ninguém</div>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Senha"
+                [formControl]="form.controls.senha">
+            </div>
+            <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Lembrar</label>
+        </div>
+        <button (click)="entrar()" class="btn btn-primary">Entrar</button>
+    </form>    
+
+    <hr>
+
+    <a routerLink="registrar" class="btn1">Registrar</a>
+
+    </div>
+
+
+</div>
