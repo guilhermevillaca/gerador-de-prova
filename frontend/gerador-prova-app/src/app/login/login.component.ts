@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Usuario } from '../model/usuario';
+import { log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { Usuario } from '../model/usuario';
 })
 export class LoginComponent implements OnInit {
 
+  estaLogado$: Observable<boolean> | undefined;   
   form = new FormGroup({
     login: new FormControl<string>(''),
     senha: new FormControl<string>(''),    
@@ -27,16 +29,19 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.estaLogado$ = this._usuarioService.isLoggedIn;   
   }
 
   public entrar(): void{
     this._usuarioService.entrar(this.form.controls.login.value, this.form.controls.senha.value).subscribe(
-      (usuario: Usuario) => {
-        if(usuario?.ativo){
+      token => {
+        console.log(token);
+        if(token){
+          this._usuarioService.setAccesso(token);
           this.router.navigate(['home']);        
         } else {
-          alert("Você errou!");        }        
+          alert("Você errou!");        
+        }        
       },
       erro => {
         console.log(erro);
