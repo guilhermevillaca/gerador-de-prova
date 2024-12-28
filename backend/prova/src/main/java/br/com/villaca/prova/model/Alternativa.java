@@ -1,6 +1,7 @@
 package br.com.villaca.prova.model;
 
 import br.com.villaca.prova.model.tipos.Formato;
+import br.com.villaca.prova.util.FormField;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -34,6 +35,7 @@ public class Alternativa {
 
     @JoinColumn(name="questao_id", referencedColumnName = "id")
     @ManyToOne
+    @FormField(type = "select")
     private Questao questao;
 
 

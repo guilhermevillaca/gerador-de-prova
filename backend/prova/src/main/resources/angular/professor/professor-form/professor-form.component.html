@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="id" class="form-label">id</label>
+    <input type="text" class="form-control" id="id" formControlName="id">
+  </div>
+  <div class="mb-3">
+    <label for="grau" class="form-label">grau</label>
+    <input type="text" class="form-control" id="grau" formControlName="grau">
+  </div>
+  <div class="mb-3">
+    <label for="pessoa" class="form-label">pessoa</label>
+    <input type="text" class="form-control" id="pessoa" formControlName="pessoa">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>data</th>
+      <th>professor</th>
+      <th>disciplina</th>
+      <th>turno</th>
+      <th>periodoLetivo</th>
+      <th>observacoes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.id }}</td>
+      <td>{{ item.data }}</td>
+      <td>{{ item.professor.id }}</td>
+      <td>{{ item.disciplina.id }}</td>
+      <td>{{ item.turno }}</td>
+      <td>{{ item.periodoLetivo }}</td>
+      <td>{{ item.observacoes }}</td>
+    </tr>
+  </tbody>
+</table>
