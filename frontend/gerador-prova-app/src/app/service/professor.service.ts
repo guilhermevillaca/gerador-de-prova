@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
-import { Pessoa } from '../model/pessoa';
+import { Professor } from '../model/professor';
 import { HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PessoaService extends GenericService<Pessoa>{
+export class ProfessorService  extends GenericService<Professor>{
 
   constructor(handler: HttpBackend, private router: Router) { 
-    let url = "http://localhost:8080/pessoa";
+    let url = "http://localhost:8080/professor";
     super(handler, url);
   }
-
+  
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-prova',
@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   templateUrl: './prova.component.html',
   styleUrl: './prova.component.css'
 })
-export class ProvaComponent {
+export class ProvaComponent implements OnInit{
+  
+  constructor(){
+
+  }
+  
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  
+
+  public criar(){
+    console.log("teste");
+  }
 
 }

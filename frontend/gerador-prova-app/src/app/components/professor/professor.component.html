@@ -1,1 +1,29 @@
-<p>professor works!</p>
+<h1>Cadastrar Prova</h1>
+
+<hr>
+<a routerLink="/professor/novo" class="btn btn-primary left">Novo</a>
+<hr>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Grau</th>
+        <th scope="col">Pessoa</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let professor of professor$">
+        <td scope="row">{{professor.id}}</td>
+        <td>{{professor.grau}}</td>
+        <td>{{professor.pessoa.nome}}</td>
+        <td>
+            <a (click)="editar(professor.id)"  class="btn btn-primary">Editar</a>&nbsp;
+            <a (click)="remover(professor.id)" class="btn btn-danger">Excluir</a>                
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>

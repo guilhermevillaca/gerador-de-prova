@@ -1,1 +1,39 @@
-<p>professor-form works!</p>
+<a routerLink="/professor" class="btn btn-primary left">Voltar</a>
+
+<form class="form" [formGroup]="form">
+
+    <div class="mb-3">        
+        <label for="id"></label>
+        <input id="id" type="text" class="form-control" placeholder="ID" [formControl]="form.controls.id" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="grau"></label>
+
+        <select id="grau" class="form-select"  [formControl]="form.controls.grau">
+            <option value="GRADUACAO">Graduação</option>
+            <option value="ESPECIALIZACAO">Especialização</option>
+            <option value="MESTRADO">Mestrado</option>
+            <option value="DOUTORADO">Doutorado</option>
+            <option value="POSDOC">Pós Doutorado</option>
+        </select>
+    </div>
+
+    <div class="mb-3">        
+        <select [formControl]="form.controls.pessoa" class="form-select">
+            <option *ngFor="let pessoa of pessoa$" value="{{pessoa.id}}">
+                {{pessoa.nome}}
+            </option>
+        </select>
+    </div>
+
+    <br>
+
+    <div class="clearfix"></div>
+
+    <div class="container-fluid d-flex justify-contend-end">        
+        <button class="btn btn-primary float-right" (click)="salvar()">Salvar</button>
+    </div>
+
+
+</form>

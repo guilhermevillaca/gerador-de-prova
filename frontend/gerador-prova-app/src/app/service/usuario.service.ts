@@ -25,10 +25,12 @@ export class UsuarioService extends GenericService<Usuario>{
   }
 
   get isLoggedIn() {
-    if(localStorage.getItem("access_token") !=null && this.isLogged()){      
-      this.loggedIn.next(true);      
-    }else{      
-      this.loggedIn.next(false);
+    if (typeof localStorage !== 'undefined') {
+      if(localStorage.getItem("access_token") !=null && this.isLogged()){      
+        this.loggedIn.next(true);      
+      }else{      
+        this.loggedIn.next(false);
+      }
     }
     return this.loggedIn.asObservable();     
   }
