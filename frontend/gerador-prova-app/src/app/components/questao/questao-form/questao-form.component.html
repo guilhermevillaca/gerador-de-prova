@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="id" class="form-label">id</label>
+    <input type="text" class="form-control" id="id" formControlName="id">
+  </div>
+  <div class="mb-3">
+    <label for="tipo" class="form-label">tipo</label>
+    <input type="text" class="form-control" id="tipo" formControlName="tipo">
+  </div>
+  <div class="mb-3">
+    <label for="enunciado" class="form-label">enunciado</label>
+    <input type="text" class="form-control" id="enunciado" formControlName="enunciado">
+  </div>
+  <div class="mb-3">
+    <label for="numeroDeLinhas" class="form-label">numeroDeLinhas</label>
+    <input type="text" class="form-control" id="numeroDeLinhas" formControlName="numeroDeLinhas">
+  </div>
+  <div class="mb-3">
+    <label for="prova" class="form-label">prova</label>
+    <input type="text" class="form-control" id="prova" formControlName="prova">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

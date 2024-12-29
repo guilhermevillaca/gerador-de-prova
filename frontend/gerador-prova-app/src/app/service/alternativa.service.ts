@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
-import { Alternativa } from '../model/alternativa';
+import { Alternativa } from '../model/alternativa.model';
 import { HttpBackend } from '@angular/common/http';
 
 @Injectable({

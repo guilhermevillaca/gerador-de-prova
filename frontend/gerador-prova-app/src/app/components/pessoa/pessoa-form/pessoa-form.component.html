@@ -1,1 +1,23 @@
-<p>pessoa-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="id" class="form-label">id</label>
+    <input type="text" class="form-control" id="id" formControlName="id">
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+  <div class="mb-3">
+    <label for="cpf" class="form-label">cpf</label>
+    <input type="text" class="form-control" id="cpf" formControlName="cpf">
+  </div>
+  <div class="mb-3">
+    <label for="dataNascimento" class="form-label">dataNascimento</label>
+    <input type="text" class="form-control" id="dataNascimento" formControlName="dataNascimento">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input type="text" class="form-control" id="email" formControlName="email">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

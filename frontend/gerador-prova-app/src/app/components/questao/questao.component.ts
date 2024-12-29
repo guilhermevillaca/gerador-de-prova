@@ -1,11 +1,14 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-questao',
-  imports: [],
+  imports: [
+    NgFor
+  ],
   templateUrl: './questao.component.html',
-  styleUrl: './questao.component.css'
+  styleUrls: ['./questao.component.css']
 })
 export class QuestaoComponent {
-
+  items: any[] = []; // Exemplo de dados
 }

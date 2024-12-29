@@ -4,8 +4,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PessoaService } from '../../../service/pessoa.service';
 import { lastValueFrom } from 'rxjs';
-import { Pessoa } from '../../../model/pessoa';
-import { Professor } from '../../../model/professor';
+import { Pessoa } from '../../../model/pessoa.model';
+import { Professor } from '../../../model/professor.model';
 import { ProfessorService } from '../../../service/professor.service';
 
 @Component({

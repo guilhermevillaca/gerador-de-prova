@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
-import { Professor } from '../model/professor';
+import { Professor } from '../model/professor.model';
 import { HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
 

@@ -10,6 +10,8 @@ import { ProfessorComponent } from './components/professor/professor.component';
 import { DisciplinaComponent } from './components/disciplina/disciplina.component';
 import { AuthGuard } from './components/auth/auth.guard';
 import { ProfessorFormComponent } from './components/professor/professor-form/professor-form.component';
+import { CidadeComponent } from './components/cidade/cidade.component';
+import { CidadeFormComponent } from './components/cidade/cidade-form/cidade-form.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -27,5 +29,8 @@ export const routes: Routes = [
     {path: 'professor', component: ProfessorComponent, canActivate: [AuthGuard]},
     {path: 'professor/novo', component: ProfessorFormComponent, canActivate: [AuthGuard]},
     {path: 'professor/editar/:id', component: ProfessorFormComponent, canActivate: [AuthGuard]},
-    {path: 'disciplina', component: DisciplinaComponent, canActivate: [AuthGuard]}
+    {path: 'disciplina', component: DisciplinaComponent, canActivate: [AuthGuard]},
+    {path: 'cidade', component: CidadeComponent, canActivate: [AuthGuard]},
+    {path: 'cidade/novo', component: CidadeFormComponent, canActivate: [AuthGuard]},
+    {path: 'cidade/editar/:id', component: CidadeFormComponent, canActivate: [AuthGuard]},
 ];

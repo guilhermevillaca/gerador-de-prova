@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
-import { Usuario } from '../model/usuario';
+import { Usuario } from '../model/usuario.model';
 import { HttpBackend, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Configuration } from '../configuration';

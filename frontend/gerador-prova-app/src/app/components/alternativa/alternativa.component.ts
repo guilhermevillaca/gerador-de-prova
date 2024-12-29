@@ -1,11 +1,14 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-alternativa',
-  imports: [],
+  imports: [
+    NgFor
+  ],
   templateUrl: './alternativa.component.html',
-  styleUrl: './alternativa.component.css'
+  styleUrls: ['./alternativa.component.css']
 })
 export class AlternativaComponent {
-
+  items: any[] = []; // Exemplo de dados
 }

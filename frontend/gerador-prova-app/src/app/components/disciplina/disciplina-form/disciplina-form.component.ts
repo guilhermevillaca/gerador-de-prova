@@ -1,8 +1,16 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-disciplina-form',
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NgFor,
+    RouterModule
+  ],
   templateUrl: './disciplina-form.component.html',
   styleUrls: ['./disciplina-form.component.css']
 })

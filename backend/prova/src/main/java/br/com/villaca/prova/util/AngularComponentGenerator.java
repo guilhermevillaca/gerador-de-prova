@@ -6,8 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,6 +31,7 @@ public class AngularComponentGenerator implements CommandLineRunner {
         // Gerar componentes Angular para cada modelo
         for (Class<?> model : models) {
             generateComponentFiles(model);
+            generateAngularModel(model);
         }
     }
 
@@ -186,5 +189,52 @@ public class AngularComponentGenerator implements CommandLineRunner {
         tableHtml.append("  </tbody>\n");
         tableHtml.append("</table>\n");
         return tableHtml.toString();
+    }
+
+    private void generateAngularModel(Class<?> modelClass) throws Exception {
+        String className = modelClass.getSimpleName();
+        String kebabCaseName = className.toLowerCase();
+        
+        // Diretório para modelos
+        String modelFolderPath = OUTPUT_DIRECTORY + "/model";
+        File modelFolder = new File(modelFolderPath);
+        if (!modelFolder.exists()) {
+            modelFolder.mkdirs();
+        }
+    
+        StringBuilder tsContent = new StringBuilder();
+    
+        tsContent.append("export class ").append(className).append(" {\n");
+    
+        for (Field field : modelClass.getDeclaredFields()) {
+            if (!Modifier.isStatic(field.getModifiers())) {
+                String fieldType = mapJavaTypeToTypeScript(field.getType());
+                tsContent.append("    ").append(field.getName()).append("!: ").append(fieldType).append(";\n");
+            }
+        }
+    
+        tsContent.append("}\n");
+    
+        // Salvando o arquivo .model.ts no diretório específico
+        writeToFile(modelFolderPath + "/" + kebabCaseName + ".model.ts", tsContent.toString());
+    }
+    
+
+    private String mapJavaTypeToTypeScript(Class<?> javaType) {
+        if (javaType == String.class) {
+            return "string";
+        } else if (javaType == int.class || javaType == Integer.class || javaType == long.class || javaType == Long.class) {
+            return "number";
+        } else if (javaType == boolean.class || javaType == Boolean.class) {
+            return "boolean";
+        } else {
+            return "any"; // Default fallback
+        }
+    }
+
+     private void writeToFile(String filePath, String content) throws Exception {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write(content);
+        }
     }
 }
