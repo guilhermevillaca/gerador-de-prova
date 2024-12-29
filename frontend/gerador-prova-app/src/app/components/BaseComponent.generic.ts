@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { inject, Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,8 @@ export abstract class BaseComponent<T> implements OnInit {
   id: any; // ID do item para edição ou remoção
   // Propriedade abstrata para a rota da entidade
   protected abstract entityRoute: string;
+  protected activatedRoute = inject(ActivatedRoute);
+  
 
   constructor(
     protected service: { get: () => any; getById: (id: any) => any; remover: (id: any) => any; salvar: (item: T) => any },

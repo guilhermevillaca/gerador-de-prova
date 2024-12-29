@@ -24,8 +24,7 @@ export class CidadeFormComponent extends BaseComponent<Cidade>{
 
   form: FormGroup;
   estado$: any;
-  private activatedRoute = inject(ActivatedRoute);
-  protected entityRoute = '/cidade';
+  entityRoute = '/cidade';
 
   constructor(service: CidadeService, private estadoService: EstadoService, router: Router){
     super(service, router);

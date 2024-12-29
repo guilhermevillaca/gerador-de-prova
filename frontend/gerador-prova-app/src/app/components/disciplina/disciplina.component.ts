@@ -1,5 +1,9 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { BaseComponent } from '../BaseComponent.generic';
+import { Disciplina } from '../../model/disciplina.model';
+import { DisciplinaService } from '../../service/disciplina.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disciplina',
@@ -9,6 +13,11 @@ import { Component } from '@angular/core';
   templateUrl: './disciplina.component.html',
   styleUrls: ['./disciplina.component.css']
 })
-export class DisciplinaComponent {
-  items: any[] = []; // Exemplo de dados
+export class DisciplinaComponent extends BaseComponent<Disciplina>{
+  
+  override entityRoute = '/disciplina';
+
+  constructor(service: DisciplinaService, router: Router){
+    super(service, router);
+  }
 }
