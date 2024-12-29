@@ -2,11 +2,24 @@ import { Disciplina } from "./disciplina.model";
 import { Professor } from "./professor.model";
 
 export class Prova {
-    id!: number;
-    data!: any;
-    professor!: Professor;
-    disciplina!: Disciplina;
-    turno!: any;
-    periodoLetivo!: string;
-    observacoes!: string;
+    id!: number | null;
+    data?: any | null;
+    professor?: Professor | null;
+    disciplina?: Disciplina | null;
+    turno?: any | null;
+    periodoLetivo?: string | null;
+    observacoes?: string | null;
+
+    static create(id: number | null, data: any | null, id_professor: number | null, id_disciplina: number | null, turno: any | null, 
+        periodoLetivo: string | null, observacoes: string | null): Prova{
+        const prova = new Prova();
+        prova.id = id;
+        prova.data = data;
+        prova.professor = {
+            id: id_professor
+        },
+        prova.disciplina = {
+            id: id_disciplina        }
+        return prova;
+    }
 }

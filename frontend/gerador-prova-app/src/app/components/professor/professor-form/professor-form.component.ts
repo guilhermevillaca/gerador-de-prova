@@ -58,7 +58,6 @@ export class ProfessorFormComponent implements OnInit{
 
 
   public salvar(){
-    //todo
     let id_ = null;
     if(this.id){
       id_ = this.id;
@@ -79,7 +78,6 @@ export class ProfessorFormComponent implements OnInit{
       }
     };   
     
-
     this.professorService.salvar(professor).subscribe(
       professor => {
         this.router.navigate(['professor']);

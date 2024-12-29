@@ -4,8 +4,9 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CidadeService } from '../../../service/cidade.service';
 import { EstadoService } from '../../../service/estado.service';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, take } from 'rxjs';
 import { Estado } from '../../../model/estado.model';
+import { Cidade } from '../../../model/cidade.model';
 
 @Component({
   selector: 'app-cidade-form',
@@ -44,30 +45,20 @@ export class CidadeFormComponent implements OnInit{
   }
 
   public salvar(){
-    let id_ = null;
+    let codigo = null;
     if(this.id){
-      id_ = this.id;
+      codigo = this.id;
     }
     let nome = this.form.controls.nome.value;
-    let id_estado = this.form.controls.estado.value;
-    let estado: Estado;
+    let id_estado = Number(this.form.controls.estado.value);
  
-    let cidade: any = {
-      "id": id_,
-      "grau": nome,
-      "estado": {
-        "id": id_estado,        
-        "nome": null        
-      }
-    };   
+    let cidade = Cidade.create(codigo, nome, id_estado);
     
-    this.cidadeService.salvar(cidade).subscribe(
-      cidade => {
-        this.router.navigate(['cidade']);
-      },
-      erro => {
-        console.log(erro);
-      }
-    );
+    this.cidadeService.salvar(cidade).pipe(
+      take(1)
+    ).subscribe({
+      next: cidade => this.router.navigate(['cidade']),
+      error: erro => console.error(erro)
+    });
   }
 }
