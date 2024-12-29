@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { CidadeService } from '../../service/cidade.service';
 import { NgFor } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { BaseComponent } from '../BaseComponent.generic';
+import { Cidade } from '../../model/cidade.model';
 
 @Component({
   selector: 'app-cidade',
@@ -13,17 +15,12 @@ import { RouterModule } from '@angular/router';
   templateUrl: './cidade.component.html',
   styleUrls: ['./cidade.component.css']
 })
-export class CidadeComponent implements OnInit{
+export class CidadeComponent extends BaseComponent<Cidade>{
 
-  cidade$:any;
+  protected entityRoute = '/cidade';
 
-  constructor(private cidadeService: CidadeService){}
-
-  ngOnInit(): void {
-    this.getCidades();
-  }
-
-  public async getCidades(){
-    this.cidade$ = await lastValueFrom(this.cidadeService.get());
-  }
+  constructor(service: CidadeService, router: Router){
+    super(service, router)
+  }   
+  
 }

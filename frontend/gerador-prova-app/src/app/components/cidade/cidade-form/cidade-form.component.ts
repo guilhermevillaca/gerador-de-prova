@@ -7,6 +7,7 @@ import { EstadoService } from '../../../service/estado.service';
 import { lastValueFrom, take } from 'rxjs';
 import { Estado } from '../../../model/estado.model';
 import { Cidade } from '../../../model/cidade.model';
+import { BaseComponent } from '../../BaseComponent.generic';
 
 @Component({
   selector: 'app-cidade-form',
@@ -19,46 +20,47 @@ import { Cidade } from '../../../model/cidade.model';
   templateUrl: './cidade-form.component.html',
   styleUrls: ['./cidade-form.component.css']
 })
-export class CidadeFormComponent implements OnInit{
+export class CidadeFormComponent extends BaseComponent<Cidade>{
 
+  form: FormGroup;
   estado$: any;
-  id: any;
-  private activateRoute = inject(ActivatedRoute);
+  private activatedRoute = inject(ActivatedRoute);
+  protected entityRoute = '/cidade';
 
-
-  constructor(private cidadeService: CidadeService, private estadoService: EstadoService, private router: Router){
-
-  }
-  ngOnInit(): void {
+  constructor(service: CidadeService, private estadoService: EstadoService, router: Router){
+    super(service, router);
     this.getEstados();
+    this.id = this.activatedRoute.snapshot.params['id'] ?? null; // Define como `null` se não houver `id`
+    this.form = new FormGroup({
+      id: new FormControl(''),
+      nome: new FormControl(''),
+      estado: new FormControl('')
+    });
+    if (this.id) {
+      // Carrega os dados do item e atualiza o formulário
+      this.loadItemById(this.id).then(() => this.updateForm());
+    }
   }
-
-
-  form = new FormGroup({
-    id: new FormControl(''),
-    nome: new FormControl(''),
-    estado: new FormControl('')
-  });
 
   public async getEstados(){
     this.estado$ = await lastValueFrom(this.estadoService.get());
   }
 
-  public salvar(){
-    let codigo = null;
-    if(this.id){
-      codigo = this.id;
+  private updateForm(): void {
+    if (this.item) {
+      this.form.patchValue({
+        id: this.item.id,
+        nome: this.item.nome,
+        estado: this.item.estado?.id
+      });
     }
-    let nome = this.form.controls.nome.value;
-    let id_estado = Number(this.form.controls.estado.value);
- 
-    let cidade = Cidade.create(codigo, nome, id_estado);
-    
-    this.cidadeService.salvar(cidade).pipe(
-      take(1)
-    ).subscribe({
-      next: cidade => this.router.navigate(['cidade']),
-      error: erro => console.error(erro)
-    });
+  }
+
+  public salvar(){
+    const formData = this.form.value;    
+    let nome = formData.nome!;
+    let id_estado = Number(formData.estado!); 
+    let cidade = Cidade.create(this.id, nome, id_estado);    
+    this.save(cidade);
   }
 }

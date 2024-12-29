@@ -4,15 +4,15 @@
 
 <form [formGroup]="form" (ngSubmit)="salvar()">
   <div class="mb-3">
-    <label for="id" class="form-label">id</label>
-    <input type="text" class="form-control" id="id" formControlName="id">
+    <label for="id" class="form-label">ID</label>
+    <input type="text" class="form-control" id="id" formControlName="id" readonly>
   </div>
   <div class="mb-3">
-    <label for="nome" class="form-label">nome</label>
+    <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" formControlName="nome">
   </div>
   <div class="mb-3">
-    <label for="estado" class="form-label">estado</label>
+    <label for="estado" class="form-label">Estado</label>
     <select class="form-select" id="estado" formControlName="estado">
       <option *ngFor="let estado of estado$" value="{{estado.id}}">{{estado.uf}}</option>
     </select>
