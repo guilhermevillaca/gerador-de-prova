@@ -1,5 +1,9 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { BaseComponent } from '../BaseComponent.generic';
+import { Pessoa } from '../../model/pessoa.model';
+import { PessoaService } from '../../service/pessoa.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa',
@@ -9,6 +13,13 @@ import { Component } from '@angular/core';
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.css']
 })
-export class PessoaComponent {
-  items: any[] = []; // Exemplo de dados
+export class PessoaComponent extends BaseComponent<Pessoa>{
+
+  protected override entityRoute: string = '/pessoa';
+
+  constructor(service: PessoaService, router: Router){
+    super(service, router);
+  }
+  
+
 }

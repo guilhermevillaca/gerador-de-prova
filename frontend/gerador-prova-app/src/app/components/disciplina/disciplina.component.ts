@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class DisciplinaComponent extends BaseComponent<Disciplina>{
   
-  override entityRoute = '/disciplina';
+  entityRoute = '/disciplina';
 
   constructor(service: DisciplinaService, router: Router){
     super(service, router);

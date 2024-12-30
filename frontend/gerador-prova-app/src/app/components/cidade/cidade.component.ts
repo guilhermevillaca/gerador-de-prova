@@ -17,7 +17,7 @@ import { Cidade } from '../../model/cidade.model';
 })
 export class CidadeComponent extends BaseComponent<Cidade>{
 
-  protected entityRoute = '/cidade';
+  entityRoute = '/cidade';
 
   constructor(service: CidadeService, router: Router){
     super(service, router)

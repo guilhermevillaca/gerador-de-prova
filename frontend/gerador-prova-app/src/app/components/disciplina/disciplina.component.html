@@ -14,6 +14,10 @@
       <td>{{ item.nome }}</td>
       <td>{{ item.codigo }}</td>
       <td>{{ item.descricao }}</td>
+      <td>
+        <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
+        <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                
+      </td>
     </tr>
   </tbody>
 </table>

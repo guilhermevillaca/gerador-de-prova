@@ -22,6 +22,10 @@
       <td>{{ item.complemento }}</td>
       <td>{{ item.cidade.id }}</td>
       <td>{{ item.pessoa.id }}</td>
+      <td>
+        <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
+        <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                
+      </td>
     </tr>
   </tbody>
 </table>
