@@ -29,12 +29,12 @@ export class CidadeFormComponent extends BaseComponent<Cidade>{
   constructor(service: CidadeService, private estadoService: EstadoService, router: Router){
     super(service, router);
     this.getEstados();
-    this.id = this.activatedRoute.snapshot.params['id'] ?? null; // Define como `null` se não houver `id`
     this.form = new FormGroup({
       id: new FormControl(''),
       nome: new FormControl(''),
       estado: new FormControl('')
     });
+    this.id = this.activatedRoute.snapshot.params['id'] ?? null; // Define como `null` se não houver `id`
     if (this.id) {
       // Carrega os dados do item e atualiza o formulário
       this.loadItemById(this.id).then(() => this.updateForm());

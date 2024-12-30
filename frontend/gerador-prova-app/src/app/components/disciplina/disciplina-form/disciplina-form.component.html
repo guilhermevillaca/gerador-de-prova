@@ -1,4 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<a routerLink="/disciplina" class="btn btn-primary left">Voltar</a>
+<hr>
+
+
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
   <div class="mb-3">
     <label for="id" class="form-label">id</label>
     <input type="text" class="form-control" id="id" formControlName="id">

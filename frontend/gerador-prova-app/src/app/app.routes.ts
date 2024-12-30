@@ -13,14 +13,16 @@ import { ProfessorFormComponent } from './components/professor/professor-form/pr
 import { CidadeComponent } from './components/cidade/cidade.component';
 import { CidadeFormComponent } from './components/cidade/cidade-form/cidade-form.component';
 import { PessoaFormComponent } from './components/pessoa/pessoa-form/pessoa-form.component';
+import { ProvaFormComponent } from './components/prova/prova-form/prova-form.component';
+import { DisciplinaFormComponent } from './components/disciplina/disciplina-form/disciplina-form.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
     {path: 'login', component: LoginComponent},
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     {path: 'prova', component: ProvaComponent, canActivate: [AuthGuard]},
-    {path: 'prova/novo', component: ProvaComponent, canActivate: [AuthGuard]},
-    {path: 'prova/editar/:id', component: ProvaComponent, canActivate: [AuthGuard]},
+    {path: 'prova/novo', component: ProvaFormComponent, canActivate: [AuthGuard]},
+    {path: 'prova/editar/:id', component: ProvaFormComponent, canActivate: [AuthGuard]},
     {path: 'questao', component: QuestaoComponent, canActivate: [AuthGuard]},
     {path: 'alternativa', component: AlternativaComponent, canActivate: [AuthGuard]},
     {path: 'layout', component: LayoutComponent, canActivate: [AuthGuard]},
@@ -31,6 +33,8 @@ export const routes: Routes = [
     {path: 'professor/novo', component: ProfessorFormComponent, canActivate: [AuthGuard]},
     {path: 'professor/editar/:id', component: ProfessorFormComponent, canActivate: [AuthGuard]},
     {path: 'disciplina', component: DisciplinaComponent, canActivate: [AuthGuard]},
+    {path: 'disciplina/novo', component: DisciplinaFormComponent, canActivate: [AuthGuard]},
+    {path: 'disciplina/editar/:id', component: DisciplinaFormComponent, canActivate: [AuthGuard]},
     {path: 'cidade', component: CidadeComponent, canActivate: [AuthGuard]},
     {path: 'cidade/novo', component: CidadeFormComponent, canActivate: [AuthGuard]},
     {path: 'cidade/editar/:id', component: CidadeFormComponent, canActivate: [AuthGuard]},

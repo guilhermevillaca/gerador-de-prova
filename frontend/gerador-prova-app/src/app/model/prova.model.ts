@@ -19,7 +19,11 @@ export class Prova {
             id: id_professor
         },
         prova.disciplina = {
-            id: id_disciplina        }
+            id: id_disciplina        
+        }
+        prova.turno = turno;
+        prova.periodoLetivo = periodoLetivo;
+        prova.observacoes = observacoes;
         return prova;
     }
 }

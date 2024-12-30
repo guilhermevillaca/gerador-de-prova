@@ -1,1 +1,42 @@
-<p>prova-form works!</p>
+
+
+<a routerLink="/prova" class="btn btn-primary left">Voltar</a>
+<hr>
+
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="mb-3">
+      <label for="id" class="form-label">id</label>
+      <input type="text" class="form-control" id="id" formControlName="id">
+    </div>
+    <div class="mb-3">
+      <label for="data" class="form-label">data</label>
+      <input type="text" class="form-control" id="data" formControlName="data">
+    </div>
+    <div class="mb-3">
+      <label for="professor" class="form-label">professor</label>
+      <select class="form-select" id="professor" formControlName="professor">
+        <option *ngFor="let professor of professores$" value="{{professor.id}}">{{professor.pessoa.nome}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="disciplina" class="form-label">disciplina</label>
+      <select class="form-select" id="disciplina" formControlName="disciplina">
+        <option *ngFor="let disciplina of disciplina$" value="{{disciplina.id}}">{{disciplina.nome}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="turno" class="form-label">turno</label>
+      <input type="text" class="form-control" id="turno" formControlName="turno">
+    </div>
+    <div class="mb-3">
+      <label for="periodoLetivo" class="form-label">periodoLetivo</label>
+      <input type="text" class="form-control" id="periodoLetivo" formControlName="periodoLetivo">
+    </div>
+    <div class="mb-3">
+      <label for="observacoes" class="form-label">observacoes</label>
+      <input type="text" class="form-control" id="observacoes" formControlName="observacoes">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  

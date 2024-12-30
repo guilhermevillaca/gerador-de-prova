@@ -1,40 +1,36 @@
 <h1>Cadastrar Prova</h1>
 
 <hr>
-<button (click)="criar()" class="btn btn-primary">Nova Prova</button>
+<a routerLink="/prova/novo" class="btn btn-primary left">Novo</a>
 <hr>
 
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Data</th>
-        <th scope="col">Professor</th>
-        <th scope="col">Disciplina</th>
-        <th scope="col">Turno</th>
-        <th scope="col">Periodo Letivo</th>
-        <th scope="col">Observações</th>
-        <th scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>twitter</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">data</th>
+      <th scope="col">professor</th>
+      <th scope="col">disciplina</th>
+      <th scope="col">turno</th>
+      <th scope="col">periodoLetivo</th>
+      <th scope="col">observacoes</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items$">
+      <td>{{ item.id }}</td>
+      <td>{{ item.data }}</td>
+      <td>{{ item.professor.id }}</td>
+      <td>{{ item.disciplina.id }}</td>
+      <td>{{ item.turno }}</td>
+      <td>{{ item.periodoLetivo }}</td>
+      <td>{{ item.observacoes }}</td>      
+      <td>
+        <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
+        <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                
+      </td>
+    </tr>
+  </tbody>
+</table>

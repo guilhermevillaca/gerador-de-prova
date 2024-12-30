@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '../BaseComponent.generic';
+import { Prova } from '../../model/prova.model';
+import { ProvaService } from '../../service/prova.service';
+import { Router, RouterModule } from '@angular/router';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-prova',
-  imports: [],
+  imports: [
+    NgFor,
+    RouterModule
+  ],
   templateUrl: './prova.component.html',
   styleUrl: './prova.component.css'
 })
-export class ProvaComponent implements OnInit{
-  
-  constructor(){
+export class ProvaComponent extends BaseComponent<Prova>{
 
-  }
+  protected override entityRoute: string = '/prova';
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  constructor(service: ProvaService, router: Router){
+    super(service, router);
 
-  
-
-  public criar(){
-    console.log("teste");
   }
 
 }
