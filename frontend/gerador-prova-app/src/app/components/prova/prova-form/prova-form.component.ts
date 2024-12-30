@@ -8,6 +8,7 @@ import { ProvaService } from '../../../service/prova.service';
 import { ProfessorService } from '../../../service/professor.service';
 import { DisciplinaService } from '../../../service/disciplina.service';
 import { lastValueFrom } from 'rxjs';
+import { DateUtilsService } from '../../../service/date-utils.service';
 
 @Component({
   selector: 'app-prova-form',
@@ -28,7 +29,9 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
   disciplina$: any;
 
 
- constructor(service: ProvaService, router: Router, private professorService: ProfessorService, private disciplinaService: DisciplinaService){
+ constructor(service: ProvaService, router: Router, private professorService: ProfessorService, private disciplinaService: DisciplinaService,
+  private dateService: DateUtilsService
+ ){
   super(service, router);
    this.form = new FormGroup({
      id: new FormControl(''),
@@ -52,7 +55,7 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
       if (this.item) {
         this.form.patchValue({
           id: this.item.id,
-          data: this.item.data,
+          data: this.dateService.toBrFormat(this.item.data),
           professor: this.item.professor?.id,
           disciplina: this.item.disciplina?.id,
           turno: this.item.turno,
@@ -63,8 +66,9 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
     }
   
     public salvar(){
-      const data = this.form.value;    
-      let prova = Prova.create(this.id, data.data, data.professor, data.disciplina, data.turno, data.periodoLetivo, data.observacoes);    
+      const data = this.form.value;
+      let dataProva = this.dateService.toIsoFormat(data.data);
+      let prova = Prova.create(this.id, dataProva, data.professor, data.disciplina, data.turno, data.periodoLetivo, data.observacoes);    
       this.save(prova);
     }
 
