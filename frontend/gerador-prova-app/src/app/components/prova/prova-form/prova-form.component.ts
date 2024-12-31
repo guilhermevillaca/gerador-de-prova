@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -16,7 +16,8 @@ import { DateUtilsService } from '../../../service/date-utils.service';
     FormsModule,
     ReactiveFormsModule,
     NgFor,
-    RouterModule
+    RouterModule,
+    NgIf
   ],
   templateUrl: './prova-form.component.html',
   styleUrl: './prova-form.component.css'
@@ -69,7 +70,16 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
       const data = this.form.value;
       let dataProva = this.dateService.toIsoFormat(data.data);
       let prova = Prova.create(this.id, dataProva, data.professor, data.disciplina, data.turno, data.periodoLetivo, data.observacoes);    
-      this.save(prova);
+      //this.save(prova);
+
+      this.service.salvar(prova).subscribe(
+        (prova: any) => {
+          this.router.navigate([`prova/editar/${prova.id}`]);
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
     }
 
     public async getProfessores(){

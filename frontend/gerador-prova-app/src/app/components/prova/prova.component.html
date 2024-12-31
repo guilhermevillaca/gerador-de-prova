@@ -21,7 +21,7 @@
   <tbody>
     <tr *ngFor="let item of items$">
       <td>{{ item.id }}</td>
-      <td>{{ item.data }}</td>
+      <td>{{ item.data | date:'dd/MM/yyyy' }}</td>
       <td>{{ item.professor.id }}</td>
       <td>{{ item.disciplina.id }}</td>
       <td>{{ item.turno }}</td>

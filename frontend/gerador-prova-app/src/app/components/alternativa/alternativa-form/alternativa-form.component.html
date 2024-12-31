@@ -1,11 +1,14 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="salvar()">
   <div class="mb-3">
     <label for="id" class="form-label">id</label>
     <input type="text" class="form-control" id="id" formControlName="id">
   </div>
   <div class="mb-3">
     <label for="formato" class="form-label">formato</label>
-    <input type="text" class="form-control" id="formato" formControlName="formato">
+    <select class="form-select" id="formato" formControlName="formato">
+      <option value="NUMERICO">Numérico</option>
+      <option value="ALFABETICO">Alfabético</option>
+    </select>
   </div>
   <div class="mb-3">
     <label for="descricao" class="form-label">descricao</label>

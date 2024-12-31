@@ -27,7 +27,12 @@
     </div>
     <div class="mb-3">
       <label for="turno" class="form-label">turno</label>
-      <input type="text" class="form-control" id="turno" formControlName="turno">
+      <select class="form-select" id="turno" formControlName="turno">
+        <option value="NOTURNO">NOTURNO</option>
+        <option value="MATUTINO">MATUTINO</option>
+        <option value="INTEGRAL">INTEGRAL</option>
+        <option value="VESPERTINO">VESPERTINO</option>
+      </select>
     </div>
     <div class="mb-3">
       <label for="periodoLetivo" class="form-label">periodoLetivo</label>
@@ -39,4 +44,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+
+  <hr>
+  <a class="btn btn-primary" [routerLink]="['/questao', id]" *ngIf="id">Cadastrar Questões</a>
   

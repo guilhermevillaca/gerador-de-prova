@@ -29,6 +29,10 @@ public class Disciplina {
     @Column(name = "descricao")
     private String descricao;
     
-    
+    public Disciplina(String nome, String codigo, String descricao){
+        this.nome = nome;
+        this.codigo = codigo;
+        this.descricao = descricao;
+    }
 
 }

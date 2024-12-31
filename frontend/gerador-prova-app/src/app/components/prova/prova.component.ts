@@ -3,13 +3,14 @@ import { BaseComponent } from '../BaseComponent.generic';
 import { Prova } from '../../model/prova.model';
 import { ProvaService } from '../../service/prova.service';
 import { Router, RouterModule } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-prova',
   imports: [
     NgFor,
-    RouterModule
+    RouterModule,
+    DatePipe
   ],
   templateUrl: './prova.component.html',
   styleUrl: './prova.component.css'

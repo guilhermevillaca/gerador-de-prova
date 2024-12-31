@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import br.com.villaca.prova.model.Cidade;
+import br.com.villaca.prova.model.Disciplina;
 import br.com.villaca.prova.model.Endereco;
 import br.com.villaca.prova.model.Estado;
 import br.com.villaca.prova.model.Pais;
@@ -16,6 +17,7 @@ import br.com.villaca.prova.model.Telefone;
 import br.com.villaca.prova.model.Usuario;
 import br.com.villaca.prova.model.tipos.Grau;
 import br.com.villaca.prova.repository.CidadeRepository;
+import br.com.villaca.prova.repository.DisciplinaRepository;
 import br.com.villaca.prova.repository.EnderecoRepository;
 import br.com.villaca.prova.repository.EstadoRepository;
 import br.com.villaca.prova.repository.PaisRepository;
@@ -54,6 +56,9 @@ public class DataFixture implements CommandLineRunner{
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    DisciplinaRepository disciplinaRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -139,6 +144,10 @@ public class DataFixture implements CommandLineRunner{
         Usuario usuario1 = new Usuario("guilherme.villaca", StringToSHA256.toSHA256("123"), true, pessoa1);
         usuarioRepository.save(usuario1);
 
+        Disciplina disciplina1 = new Disciplina("Engenharia de Software", "ES", "Disciplina de Engenharia de Software");
+        disciplinaRepository.save(disciplina1);
+        Disciplina disciplina2 = new Disciplina("Programação Orientada a Objetos ","POO", "Disciplina de POO");
+        disciplinaRepository.save(disciplina2);
 
         System.out.println("Dados inseridos com sucesso!");
 

@@ -1,3 +1,9 @@
+<h1>Cadastrar Alternativas</h1>
+
+<hr>
+<a class="btn btn-primary" [routerLink]="['/alternativa', id_questao, 'novo']">Nova Alternativa</a>
+<hr>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,6 +20,10 @@
       <td>{{ item.formato }}</td>
       <td>{{ item.descricao }}</td>
       <td>{{ item.questao.id }}</td>
+      <td>
+        <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
+        <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                
+      </td>
     </tr>
   </tbody>
 </table>
