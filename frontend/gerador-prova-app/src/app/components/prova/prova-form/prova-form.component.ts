@@ -41,6 +41,7 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
      disciplina: new FormControl(''),
      turno: new FormControl(''),
      periodoLetivo: new FormControl(''),
+     formato: new FormControl(''),
      observacoes: new FormControl('')
     });
     this.id = this.activatedRoute.snapshot.params['id'] ?? null; // Define como `null` se não houver `id`
@@ -61,6 +62,7 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
           disciplina: this.item.disciplina?.id,
           turno: this.item.turno,
           periodoLetivo: this.item.periodoLetivo,
+          formato: this.item.formato,
           observacoes: this.item.observacoes
         });
       }
@@ -69,7 +71,7 @@ export class ProvaFormComponent extends BaseComponent<Prova>{
     public salvar(){
       const data = this.form.value;
       let dataProva = this.dateService.toIsoFormat(data.data);
-      let prova = Prova.create(this.id, dataProva, data.professor, data.disciplina, data.turno, data.periodoLetivo, data.observacoes);    
+      let prova = Prova.create(this.id, dataProva, data.professor, data.disciplina, data.turno, data.periodoLetivo, data.formato,data.observacoes);    
       //this.save(prova);
 
       this.service.salvar(prova).subscribe(

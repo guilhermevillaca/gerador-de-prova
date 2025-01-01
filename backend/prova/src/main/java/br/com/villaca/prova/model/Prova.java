@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+
+import br.com.villaca.prova.model.tipos.Formato;
 import br.com.villaca.prova.model.tipos.Turno;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,5 +50,10 @@ public class Prova {
 
     @Column(length = 1000, name = "obervacoes")
     private String observacoes;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="formato")
+    private Formato formato;//formato da questao, pode ser numerico, alfatebo ou V ou F
+
 
 }

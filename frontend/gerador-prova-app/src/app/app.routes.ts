@@ -31,7 +31,7 @@ export const routes: Routes = [
     {path: 'alternativa/:id_questao', component: AlternativaComponent, canActivate: [AuthGuard]},
     {path: 'alternativa/:id_questao/novo', component: AlternativaFormComponent, canActivate: [AuthGuard]},
     {path: 'alternativa/:id_questao/editar/:id', component: AlternativaFormComponent, canActivate: [AuthGuard]},
-    {path: 'layout', component: LayoutComponent, canActivate: [AuthGuard]},
+    {path: 'imprimir/:id', component: LayoutComponent, canActivate: [AuthGuard]},
     {path: 'pessoa', component: PessoaComponent, canActivate: [AuthGuard]},
     {path: 'pessoa/novo', component: PessoaFormComponent, canActivate: [AuthGuard]},
     {path: 'pessoa/editar/:id', component: PessoaFormComponent, canActivate: [AuthGuard]},

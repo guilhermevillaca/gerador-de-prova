@@ -6,4 +6,5 @@ export class Prova {
     turno!: any;
     periodoLetivo!: string;
     observacoes!: string;
+    formato!: any;
 }

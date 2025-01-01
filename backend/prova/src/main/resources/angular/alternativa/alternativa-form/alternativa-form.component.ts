@@ -9,7 +9,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AlternativaFormComponent {
   form = new FormGroup({
     id: new FormControl(''),
-    formato: new FormControl(''),
     descricao: new FormControl(''),
     questao: new FormControl('')
   });

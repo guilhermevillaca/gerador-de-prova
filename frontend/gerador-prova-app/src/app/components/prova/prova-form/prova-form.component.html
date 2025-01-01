@@ -38,13 +38,26 @@
       <label for="periodoLetivo" class="form-label">periodoLetivo</label>
       <input type="text" class="form-control" id="periodoLetivo" formControlName="periodoLetivo">
     </div>
+    
+    <div class="mb-3">
+      <label for="formato" class="form-label">formato</label>
+      <select class="form-select" id="formato" formControlName="formato">
+        <option value="NUMERICO">Numérico</option>
+        <option value="ALFABETO">Alfabeto</option>
+      </select>
+    </div>
     <div class="mb-3">
       <label for="observacoes" class="form-label">observacoes</label>
-      <input type="text" class="form-control" id="observacoes" formControlName="observacoes">
+      <textarea class="form-control" id="observacoes" formControlName="observacoes"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
   <hr>
   <a class="btn btn-primary" [routerLink]="['/questao', id]" *ngIf="id">Cadastrar Questões</a>
+
+  <hr>
+
+
+  <a class="btn btn-primary" [routerLink]="['/imprimir', id]" *ngIf="id">Imprimir Prova</a>
   

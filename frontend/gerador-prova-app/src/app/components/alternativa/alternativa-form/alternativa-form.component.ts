@@ -28,7 +28,6 @@ export class AlternativaFormComponent extends BaseComponent<Alternativa>{
     this.id_questao = this.activatedRoute.snapshot.params['id_questao'] ?? null; // Define como `null` se não houver `id`
     this.form = new FormGroup({
       id: new FormControl(''),
-      formato: new FormControl(''),
       descricao: new FormControl(''),
       questao: new FormControl(this.id_questao)
     });
@@ -44,7 +43,6 @@ export class AlternativaFormComponent extends BaseComponent<Alternativa>{
     if (this.item) {
       this.form.patchValue({
         id: this.item.id,
-        formato: this.item.formato,
         descricao: this.item.descricao,
         questao: this.item.questao?.id
       });
@@ -53,7 +51,7 @@ export class AlternativaFormComponent extends BaseComponent<Alternativa>{
 
   public salvar() {
     const data = this.form.value;
-    let alternativa = Alternativa.create(this.id, data.formato, data.descricao, this.id_questao);
+    let alternativa = Alternativa.create(this.id, data.descricao, this.id_questao);
     //this.save(alternativa);
     this.service.salvar(alternativa).subscribe(
       (alternativa: any) => {

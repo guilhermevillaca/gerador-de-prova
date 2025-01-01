@@ -14,7 +14,8 @@ export class ProvaFormComponent {
     disciplina: new FormControl(''),
     turno: new FormControl(''),
     periodoLetivo: new FormControl(''),
-    observacoes: new FormControl('')
+    observacoes: new FormControl(''),
+    formato: new FormControl('')
   });
 
   onSubmit() {

@@ -25,11 +25,7 @@ public class Alternativa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name="formato")
-    private Formato formato;//formato da questao, pode ser numerico, alfatebo ou V ou F
-
+  
     @Column(name = "descricao")
     private String descricao;
 

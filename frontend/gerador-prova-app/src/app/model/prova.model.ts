@@ -9,9 +9,10 @@ export class Prova {
     turno?: any | null;
     periodoLetivo?: string | null;
     observacoes?: string | null;
+    formato?: string|null;
 
     static create(id: number | null, data: any | null, id_professor: number | null, id_disciplina: number | null, turno: any | null, 
-        periodoLetivo: string | null, observacoes: string | null): Prova{
+        periodoLetivo: string | null, formato: string | null, observacoes: string | null): Prova{
         const prova = new Prova();
         prova.id = id;
         prova.data = data;
@@ -24,6 +25,7 @@ export class Prova {
         prova.turno = turno;
         prova.periodoLetivo = periodoLetivo;
         prova.observacoes = observacoes;
+        prova.formato = formato;
         return prova;
     }
 }
