@@ -4,4 +4,5 @@ export class Questao {
     enunciado!: string;
     numeroDeLinhas!: number;
     prova!: any;
+    alternativas!: any;
 }

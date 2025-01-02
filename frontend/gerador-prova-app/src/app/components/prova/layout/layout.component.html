@@ -1,4 +1,4 @@
-<div class="container" *ngIf="prova">
+<div class="container" *ngIf="prova" id="conteudo-pdf">
   <div class="row">
     <div class="col text-center">
       <h1>Faculdade de Tecnologia do Senac</h1>
@@ -22,13 +22,42 @@
     </div>
   </div>
 
+  <div class="container-sm mx-auto mt-4" id="gabarito-formato-1" style="max-width: 600px;">
+    <h2 class="text-center">Gabarito 1 </h2>
+    <ul class="list-group d-flex justify-content-center align-items-center">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let questao of questoes; let i = index">
+        <span>Questão {{ i + 1 }}:</span>
+        <div class="square-box"></div>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="container-sm mx-auto mt-4" id="gabarito-formato-2" style="max-width: 600px;">
+    <h2 class="text-center">Gabarito 2</h2>
+    <ul class="list-group d-flex justify-content-center align-items-center">
+      <li class="list-group-item" *ngFor="let questao of questoes; let i = index">
+        <div class="d-flex align-items-center">
+          <span class="me-3">Questão {{ i + 1 }}:</span>
+          <div class="d-flex align-items-center">
+            <div class="circle-box" *ngFor="let opcao of ['A', 'B', 'C', 'D', 'E']; let j = index">
+              {{ opcao }}
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  
+
   <div class="row mt-4" *ngFor="let questao of questoes || []">
     <div class="col">
       <p><strong>{{questao?.id}}) {{questao?.enunciado}}</strong></p>
-      {{alternativas[questao.id]}}
-      <div *ngIf="questao?.tipo === 'MULTIPLA_ESCOLHA' && alternativas[questao?.id]?.length > 0">
+      
+      <div *ngIf="questao?.tipo === 'MULTIPLA_ESCOLHA'">
         <ol type="A">
-          <li *ngFor="let alternativa of alternativas[questao?.id]">
+          <li *ngFor="let alternativa of questao.alternativas">
             {{alternativa?.descricao}}
           </li>
         </ol>
@@ -36,11 +65,16 @@
       <div *ngIf="questao?.tipo === 'ABERTA'">
         <textarea class="form-control" rows="{{questao?.numeroDeLinhas}}"></textarea>
       </div>
-      <div *ngIf="questao?.tipo === 'ABERTA' && (!alternativas[questao?.id] || !alternativas[questao?.id]?.length)">
+      <div *ngIf="questao?.tipo === 'MULTIPLA_ESCOLHA' && (!questao.alternativas || !questao.alternativas.length)">
         <p class="text-muted">Sem alternativas disponíveis para esta questão.</p>
       </div>
+      
     </div>
   </div>
   
+
+  
   
 </div>
+
+<button class="btn btn-primary mt-4" (click)="exportarParaPDF()">Exportar para PDF</button>

@@ -12,7 +12,8 @@ export class QuestaoFormComponent {
     tipo: new FormControl(''),
     enunciado: new FormControl(''),
     numeroDeLinhas: new FormControl(''),
-    prova: new FormControl('')
+    prova: new FormControl(''),
+    alternativas: new FormControl('')
   });
 
   onSubmit() {

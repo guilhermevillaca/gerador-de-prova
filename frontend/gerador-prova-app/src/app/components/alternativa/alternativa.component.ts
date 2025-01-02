@@ -19,16 +19,18 @@ export class AlternativaComponent extends BaseComponent<Alternativa>{
 
   entityRoute = '/alternativa';
   id_questao: number;
+  alternativas$: any;
   constructor(protected override service: AlternativaService, router: Router){
     super(service, router);
     this.id_questao = this.activatedRoute.snapshot.params['id_questao'] ?? null; // Define como `null` se não houver `id`
+    console.log(this.id_questao);
     if(this.id_questao){
       this.findByQuestao(this.id_questao);
     }
   }
 
   public async findByQuestao(id_prova: number){
-      this.items$ = await lastValueFrom(this.service.findByQuestao(this.id_questao));      
+      this.alternativas$ = await lastValueFrom(this.service.findByQuestao(this.id_questao));      
     }
   
     override edit(id: any): void {

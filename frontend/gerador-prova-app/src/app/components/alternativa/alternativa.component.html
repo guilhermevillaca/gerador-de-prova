@@ -14,10 +14,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items$">
-      <td>{{ item.id }}</td>
-      <td>{{ item.descricao }}</td>
-      <td>{{ item.questao.id }}</td>
+    <tr *ngFor="let item of alternativas$">
+      <td>{{ item?.id }}</td>
+      <td>{{ item?.descricao }}</td>
+      <td>{{ item?.questao?.id }}</td>
       <td>
         <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
         <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                

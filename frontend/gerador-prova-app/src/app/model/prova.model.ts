@@ -28,4 +28,14 @@ export class Prova {
         prova.formato = formato;
         return prova;
     }
+
+    static getNomeDinamico(prova: Prova): string {
+        const nomeDisciplina = prova.disciplina?.nome || "Disciplina";
+        const nomeProfessor = prova.professor?.pessoa?.nome || "Professor";
+        const dataProva = prova.data ? new Date(prova.data).toLocaleDateString('pt-BR') : "Data";
+        const turnoProva = prova.turno || "Turno";
+
+        return `${nomeDisciplina}_${nomeProfessor}_${dataProva}_${turnoProva}`.replace(/\s+/g, '_');
+    }
+
 }

@@ -1,0 +1,52 @@
+.square-box {
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    margin-left: 5px;
+  }
+
+  .circle-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  
+
+  @media print {
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .container {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .list-group-item {
+      border: none;
+      padding: 10px 0;
+    }
+    .square-box, .circle-box {
+      margin-left: auto;
+    }
+  }
+  
+
+  #conteudo-pdf {
+    background: white;
+    padding: 20px;
+  }
+  
+  .square-box {
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+  }
+  

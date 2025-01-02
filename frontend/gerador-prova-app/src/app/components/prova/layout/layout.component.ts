@@ -7,6 +7,9 @@ import { lastValueFrom } from 'rxjs';
 import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { Alternativa } from '../../../model/alternativa.model';
 import { Questao } from '../../../model/questao.model';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Prova } from '../../../model/prova.model';
 
 @Component({
   selector: 'app-layout',
@@ -41,39 +44,46 @@ export class LayoutComponent implements OnInit {
   public async getProva() {
     try {
       this.prova = await lastValueFrom(this.provaService.getById(this.id_prova));
-      this.getQuestoes(this.prova);
+      this.getQuestoes();
+     // this.testarQuestoesEAlternativas();
     } catch (error) {
       console.error('Erro ao buscar prova:', error);
     }
   }
 
-  public async getQuestoes(prova: any) {
+  public async getQuestoes() {
     try {
-      this.questoes = await lastValueFrom(this.questaoService.findByProva(prova.id));
-      // Inicializa as alternativas para cada questão
-      this.questoes.forEach((questao: any) => this.getAlternativas(questao));
+      this.questoes = await lastValueFrom(this.questaoService.findByProva(this.id_prova));
     } catch (error) {
       console.error('Erro ao buscar questões:', error);
       this.questoes = []; // Garante que questoes seja sempre um array
     }
-  }
-  
+  }  
 
-  public async getAlternativas(questao: any) {
-    try {
-      const alternativas = await lastValueFrom(this.alternativaService.findByQuestao(questao.id));
-      // Adiciona as alternativas apenas quando disponíveis
-      if (alternativas) {
-        this.alternativas[questao.id] = alternativas;
-      } else {
-        this.alternativas[questao.id] = []; // Garante que a chave existe, mesmo que sem alternativas
-      }
-    } catch (error) {
-      //console.error(`Erro ao buscar alternativas para a questão ${questao.id}:`, error);
-      console.log(error);
-      this.alternativas[questao.id] = []; // Define como array vazio em caso de erro
-    }
-  }
   
+  public exportarParaPDF(): void {
+    const elemento = document.getElementById('conteudo-pdf'); // ID do elemento HTML a ser convertido
+
+    if (!elemento) {
+      console.error('Elemento não encontrado!');
+      return;
+    }
+
+    html2canvas(elemento).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png'); // Converte o elemento capturado em uma imagem
+      const pdf = new jsPDF({
+        orientation: 'portrait', // ou 'landscape'
+        unit: 'mm',
+        format: 'a4',
+      });
+
+      const larguraPDF = pdf.internal.pageSize.getWidth();
+      const alturaPDF = (canvas.height * larguraPDF) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, larguraPDF, alturaPDF); // Adiciona a imagem ao PDF
+      let nome = Prova.getNomeDinamico(this.prova);
+      pdf.save(nome + '.pdf'); // Salva o PDF com o nome desejado
+    });
+  }
   
 }
