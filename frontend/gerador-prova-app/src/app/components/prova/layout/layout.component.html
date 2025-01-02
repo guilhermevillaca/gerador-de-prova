@@ -1,39 +1,46 @@
 <div class="container" *ngIf="prova">
-    <div class="row">
-      <div class="col text-center">
-        <h1>Faculdade de Tecnologia do Senac</h1>
-        <h2>Prova – Exame – Período Letivo {{prova.periodoLetivo}}</h2>
-        <p>Disciplina: {{prova.disciplina?.nome}} | Professor: {{prova.professor?.nome}}</p>
-        <p>Turma: {{prova.turno}} | Data: {{prova.data | date:'dd/MM/yyyy'}}</p>
-        <p>Valor da avaliação: 10</p>
-        <p>Acadêmico(a): ______________________</p>
-      </div>
+  <div class="row">
+    <div class="col text-center">
+      <h1>Faculdade de Tecnologia do Senac</h1>
+      <h2>Prova – Exame – Período Letivo {{prova.periodoLetivo}}</h2>
+      <p>Disciplina: {{prova.disciplina?.nome}} | Professor: {{prova.professor?.nome}}</p>
+      <p>Turma: {{prova.turno}} | Data: {{prova.data | date:'dd/MM/yyyy'}}</p>
+      <p>Valor da avaliação: 10</p>
+      <p>Acadêmico(a): ______________________</p>
     </div>
-  
-    <div class="row">
-      <div class="col">
-        <p><strong>Observações:</strong></p>
-        <ul>
-          <li>O aluno que realizar a prova a lápis, ou com caneta de cor diferente da preta ou azul, não poderá solicitar revisão de prova.</li>
-          <li>Celulares e aparelhos eletrônicos deverão estar desligados e guardados.</li>
-          <li>Não será permitida a consulta a qualquer material ou a colegas, salvo orientação do professor.</li>
-          <li>Questões objetivas rasuradas serão anuladas.</li>
-        </ul>
-      </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p><strong>Observações:</strong></p>
+      <ul>
+        <li>O aluno que realizar a prova a lápis, ou com caneta de cor diferente da preta ou azul, não poderá solicitar revisão de prova.</li>
+        <li>Celulares e aparelhos eletrônicos deverão estar desligados e guardados.</li>
+        <li>Não será permitida a consulta a qualquer material ou a colegas, salvo orientação do professor.</li>
+        <li>Questões objetivas rasuradas serão anuladas.</li>
+      </ul>
     </div>
-  
-    <div class="row mt-4" *ngFor="let questao of questoes">
-      <div class="col">
-        <p><strong>{{questao.id}}) {{questao.enunciado}}</strong></p>
-        <div *ngIf="questao.tipo === 'Objetiva'">
-          <ol type="A">
-            <li *ngFor="let alternativa of questao.alternativas">{{alternativa.descricao}}</li>
-          </ol>
-        </div>
-        <div *ngIf="questao.tipo === 'Dissertativa'">
-          <textarea class="form-control" rows="{{questao.numeroDeLinhas}}"></textarea>
-        </div>
+  </div>
+
+  <div class="row mt-4" *ngFor="let questao of questoes || []">
+    <div class="col">
+      <p><strong>{{questao?.id}}) {{questao?.enunciado}}</strong></p>
+      {{alternativas[questao.id]}}
+      <div *ngIf="questao?.tipo === 'MULTIPLA_ESCOLHA' && alternativas[questao?.id]?.length > 0">
+        <ol type="A">
+          <li *ngFor="let alternativa of alternativas[questao?.id]">
+            {{alternativa?.descricao}}
+          </li>
+        </ol>
+      </div>
+      <div *ngIf="questao?.tipo === 'ABERTA'">
+        <textarea class="form-control" rows="{{questao?.numeroDeLinhas}}"></textarea>
+      </div>
+      <div *ngIf="questao?.tipo === 'ABERTA' && (!alternativas[questao?.id] || !alternativas[questao?.id]?.length)">
+        <p class="text-muted">Sem alternativas disponíveis para esta questão.</p>
       </div>
     </div>
   </div>
   
+  
+</div>
