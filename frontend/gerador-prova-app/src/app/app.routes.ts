@@ -17,9 +17,10 @@ import { ProvaFormComponent } from './components/prova/prova-form/prova-form.com
 import { DisciplinaFormComponent } from './components/disciplina/disciplina-form/disciplina-form.component';
 import { QuestaoFormComponent } from './components/questao/questao-form/questao-form.component';
 import { AlternativaFormComponent } from './components/alternativa/alternativa-form/alternativa-form.component';
+import { SiteComponent } from './site/site.component';
 
 export const routes: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '', component: SiteComponent},
     {path: 'login', component: LoginComponent},
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     {path: 'prova', component: ProvaComponent, canActivate: [AuthGuard]},
