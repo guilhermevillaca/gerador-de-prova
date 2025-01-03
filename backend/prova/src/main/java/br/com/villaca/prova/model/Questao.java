@@ -2,6 +2,7 @@ package br.com.villaca.prova.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.villaca.prova.model.tipos.TipoQuestao;
@@ -49,5 +50,10 @@ public class Questao {
     @OneToMany(mappedBy = "questao", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //FetchType.EAGER
     @JsonManagedReference
     private List<Alternativa> alternativas;
+
+    @ManyToOne
+    @JoinColumn(name = "banco_questoes_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
+    private BancoQuestoes bancoQuestoes;
     
 }

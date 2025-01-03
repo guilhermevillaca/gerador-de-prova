@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "banco_questoes")
 @Data
@@ -25,6 +27,7 @@ public class BancoQuestoes {
     private Disciplina disciplina;
 
     @OneToMany(mappedBy = "bancoQuestoes", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Questao> questoes;
     
 }

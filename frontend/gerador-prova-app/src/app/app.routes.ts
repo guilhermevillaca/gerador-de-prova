@@ -18,6 +18,8 @@ import { DisciplinaFormComponent } from './components/disciplina/disciplina-form
 import { QuestaoFormComponent } from './components/questao/questao-form/questao-form.component';
 import { AlternativaFormComponent } from './components/alternativa/alternativa-form/alternativa-form.component';
 import { SiteComponent } from './site/site.component';
+import { BancoQuestoesComponent } from './components/bancoquestoes/bancoquestoes.component';
+import { BancoQuestoesFormComponent } from './components/bancoquestoes/bancoquestoes-form/bancoquestoes-form.component';
 
 export const routes: Routes = [
     {path: '', component: SiteComponent},
@@ -45,4 +47,6 @@ export const routes: Routes = [
     {path: 'cidade', component: CidadeComponent, canActivate: [AuthGuard]},
     {path: 'cidade/novo', component: CidadeFormComponent, canActivate: [AuthGuard]},
     {path: 'cidade/editar/:id', component: CidadeFormComponent, canActivate: [AuthGuard]},
+    {path: 'banco-questoes', component: BancoQuestoesComponent, canActivate: [AuthGuard]},
+    {path: 'banco-questoes/novo', component: BancoQuestoesFormComponent, canActivate: [AuthGuard]},
 ];

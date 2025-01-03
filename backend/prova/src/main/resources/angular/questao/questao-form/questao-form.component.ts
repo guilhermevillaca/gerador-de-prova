@@ -13,7 +13,8 @@ export class QuestaoFormComponent {
     enunciado: new FormControl(''),
     numeroDeLinhas: new FormControl(''),
     prova: new FormControl(''),
-    alternativas: new FormControl('')
+    alternativas: new FormControl(''),
+    bancoQuestoes: new FormControl('')
   });
 
   onSubmit() {

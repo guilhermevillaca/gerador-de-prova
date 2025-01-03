@@ -1,0 +1,29 @@
+<h1>Cadastrar Banco</h1>
+
+<hr>
+<a class="btn btn-primary" [routerLink]="['/banco-questoes/novo']">Novo Banco de Questões</a>
+<hr>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>nome</th>
+      <th>disciplina</th>
+      <th>questoes</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items$">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.disciplina.id }}</td>
+      <td>
+        <a (click)="edit(item.id)"  class="btn btn-primary">Editar</a>&nbsp;
+        <a (click)="remove(item.id)" class="btn btn-danger">Excluir</a>                
+      </td>
+    </tr>
+  </tbody>
+</table>

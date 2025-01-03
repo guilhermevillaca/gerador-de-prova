@@ -1,0 +1,22 @@
+
+<a routerLink="/banco-questoes" class="btn btn-primary left">Voltar</a>
+<hr>
+
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <div class="mb-3">
+    <label for="id" class="form-label">id</label>
+    <input type="text" class="form-control" id="id" formControlName="id">
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+  <div class="mb-3">
+    <label for="disciplina" class="form-label">disciplina</label>
+    <select class="form-select" id="disciplina" formControlName="disciplina">
+      <option *ngFor="let disciplina of disciplina$" value="{{disciplina.id}}">{{disciplina.nome}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

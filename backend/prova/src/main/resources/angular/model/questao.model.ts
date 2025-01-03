@@ -5,4 +5,5 @@ export class Questao {
     numeroDeLinhas!: number;
     prova!: any;
     alternativas!: any;
+    bancoQuestoes!: any;
 }
